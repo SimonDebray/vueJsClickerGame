@@ -7,7 +7,10 @@
              :currentIncrement ="currentClickIncrement"
              :autoIncrement = "autoIncrement"
     ></clicker>
-    <shop></shop>
+    <shop
+      :currentIncrement ="currentClickIncrement"
+      :autoIncrement = "autoIncrement"
+    ></shop>
     <bonus></bonus>
     <stats></stats>
   </div>
@@ -32,7 +35,7 @@ export default {
   created: function () {
     const self = this
     this.intervalid1 = setInterval(function () {
-      self.count += self.auto
+      self.count += self.autoIncrement
     }, 1000)
   },
   methods: {
