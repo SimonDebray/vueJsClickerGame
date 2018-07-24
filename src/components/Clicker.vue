@@ -16,6 +16,8 @@ export default {
   ],
   methods: {
     clickerEmit: function () {
+      // TODO Trigger effect on click
+      // Trigger the counter that will be incremented
       this.$emit('counter')
     }
   }
