@@ -3,9 +3,13 @@
     <div>
       <p>{{ count }} vue</p>
     </div>
-    <clicker></clicker>
+    <clicker @counter="counter"
+             :currentIncrement ="currentClickIncrement"
+             :autoIncrement = "autoIncrement"
+    ></clicker>
     <shop></shop>
     <bonus></bonus>
+    <stats></stats>
   </div>
 </template>
 
@@ -13,12 +17,17 @@
 import Clicker from './Clicker'
 import Shop from './Shop'
 import Bonus from './Bonus'
+import Stats from './Stats'
 
 export default {
   name: 'Main',
-  components: {Bonus, Shop, Clicker},
+  components: {Bonus, Shop, Clicker, Stats},
   data () {
-    return {count: 0, auto: 0}
+    return {
+      count: 0,
+      autoIncrement: 0,
+      currentClickIncrement: 1
+    }
   },
   created: function () {
     const self = this
@@ -27,6 +36,9 @@ export default {
     }, 1000)
   },
   methods: {
+    counter: function () {
+      this.count += this.currentClickIncrement
+    }
   }
 }
 </script>
