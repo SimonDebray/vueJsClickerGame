@@ -6,11 +6,11 @@
     <clicker @counter="counter"
              :currentIncrement ="currentClickIncrement"
              :autoIncrement = "autoIncrement"
-    ></clicker>
+             :count = "count"></clicker>
     <shop
       :currentIncrement ="currentClickIncrement"
       :autoIncrement = "autoIncrement"
-    ></shop>
+      :count = "count"></shop>
     <bonus></bonus>
     <stats></stats>
   </div>

@@ -8,7 +8,6 @@
 export default {
   name: 'Clicker',
   data () {
-    return {d: 1}
   },
   props: [
     'currentClickIncrement',
