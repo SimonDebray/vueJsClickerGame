@@ -2,6 +2,7 @@
   <div @click="buyEmit" class="isNotClickable">
     <h3>{{ item.data.name }}</h3>
     <img :src="item.data.img"/>
+    <p><strong>Price: </strong> {{ item.data.specs.price }}</p>
   </div>
 </template>
 
@@ -11,7 +12,7 @@ export default {
   props: ['item'],
   methods: {
     buyEmit: function () {
-      this.$emit('buy', this.item.id)
+      this.$emit('buy', this.item)
     }
   }
 }

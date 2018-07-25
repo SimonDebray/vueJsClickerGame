@@ -7,7 +7,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     count: 0,
-    autoIncrement: 1,
+    autoIncrement: 0,
     currentClickIncrement: 1,
     items: [
       {
@@ -42,6 +42,13 @@ const store = new Vuex.Store({
     },
     decrement (state, n) {
       state.count -= n
+    },
+    updateItem (state, params) {
+      params.item.data.specs.price = params.item.data.specs.price * Math.pow(1.2, params.nb)
+      params.item.data.count += params.nb
+    },
+    updateAutoIncrement (state, n) {
+      state.autoIncrement += n
     }
   },
   actions: {
@@ -50,16 +57,24 @@ const store = new Vuex.Store({
       if (state.count >= n) {
         commit('decrement', n)
       }
+    },
+    purchaseItem ({ commit, state }, params) {
+      let item = params.item
+      if (state.count >= item.data.specs.price) {
+        commit('decrement', item.data.specs.price * params.nb)
+        commit('updateAutoIncrement', item.data.specs.vueS * params.nb)
+        commit('updateItem', {item: item, nb: params.nb})
+      }
     }
   },
   getters: {
     count: state => {
       return state.count
     },
-    getAllItems: state => {
+    items: state => {
       return state.items
     },
-    getItemById: (state) => (id) => {
+    item: (state) => (id) => {
       return state.items.find(items => items.id === id)
     },
     autoIncrement: state => {
