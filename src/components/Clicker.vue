@@ -7,8 +7,6 @@
 <script>
 export default {
   name: 'Clicker',
-  data () {
-  },
   props: [
     'currentClickIncrement',
     'autoIncrement'

@@ -21,26 +21,31 @@ import Clicker from './Clicker'
 import Shop from './Shop'
 import Bonus from './Bonus'
 import Stats from './Stats'
+import { mapGetters, mapActions } from 'vuex'
+import store from '../store/Store'
 
 export default {
   name: 'Main',
   components: {Bonus, Shop, Clicker, Stats},
-  data () {
-    return {
-      count: 0,
-      autoIncrement: 0,
-      currentClickIncrement: 1
-    }
+  computed: {
+    ...mapGetters([
+      'count',
+      'autoIncrement',
+      'currentClickIncrement'
+    ]),
+    ...mapActions([
+      'increment'
+    ])
   },
   created: function () {
     const self = this
     this.intervalid1 = setInterval(function () {
-      self.count += self.autoIncrement
+      store.dispatch('increment', self.autoIncrement)
     }, 1000)
   },
   methods: {
     counter: function () {
-      this.count += this.currentClickIncrement
+      store.dispatch('increment', this.currentClickIncrement)
     }
   }
 }
