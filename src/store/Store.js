@@ -53,6 +53,24 @@ const store = new Vuex.Store({
         vueS: 47,
         maxCount: 1000
       }
+    ],
+    boosts: [
+      {
+        id: 1,
+        name: 'Silver clicker',
+        img: require('../assets/clickBoost.jpg'),
+        rate: 2,
+        price: 100,
+        purchased: false
+      },
+      {
+        id: 2,
+        name: 'Gold clicker',
+        img: require('../assets/clickBoost.jpg'),
+        rate: 2,
+        price: 500,
+        purchased: false
+      }
     ]
   },
   mutations: {
@@ -71,6 +89,9 @@ const store = new Vuex.Store({
     },
     updateCurrentClickIncrement (state, n) {
       state.currentClickIncrement = state.currentClickIncrement * n
+    },
+    purchasedBoost (state, boost) {
+      boost.purchased = true
     }
   },
   actions: {
@@ -87,6 +108,13 @@ const store = new Vuex.Store({
         commit('updateAutoIncrement', item.vueS * params.nb)
         commit('updateItem', {item: item, nb: params.nb})
       }
+    },
+    purchaseBoost ({ commit, state }, boost) {
+      if (state.count >= boost.price && !boost.purchased) {
+        commit('decrement', boost.price)
+        commit('updateCurrentClickIncrement', boost.rate)
+        commit('purchasedBoost', boost)
+      }
     }
   },
   getters: {
@@ -95,6 +123,9 @@ const store = new Vuex.Store({
     },
     items: state => {
       return state.items
+    },
+    boosts: state => {
+      return state.boosts
     },
     item: (state) => (id) => {
       return state.items.find(items => items.id === id)
