@@ -3,7 +3,7 @@
     <h3>{{ item.name }}</h3>
     <img :src="item.img"/>
     <p><strong>Price: </strong> {{ item.price }}</p>
-    <p><strong>Owned: </strong> {{ item.count }}</p>
+    <p><strong>Vue / seconde: </strong> {{ item.vueS }}</p>
   </div>
 </template>
 

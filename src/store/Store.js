@@ -23,7 +23,8 @@ const store = new Vuex.Store({
         name: 'Clicker',
         img: require('../assets/clicker.png'),
         price: 15,
-        vueS: 0.1
+        vueS: 0.1,
+        maxCount: 1000
       },
       {
         id: 2,
@@ -31,7 +32,8 @@ const store = new Vuex.Store({
         name: 'GitHub',
         img: require('../assets/github.png'),
         price: 100,
-        vueS: 1
+        vueS: 1,
+        maxCount: 1000
       },
       {
         id: 3,
@@ -39,7 +41,17 @@ const store = new Vuex.Store({
         name: 'Vuex',
         img: require('../assets/vuex.png'),
         price: 1100,
-        vueS: 8
+        vueS: 8,
+        maxCount: 1000
+      },
+      {
+        id: 4,
+        count: 0,
+        name: 'Webpack',
+        img: require('../assets/webpack.png'),
+        price: 12000,
+        vueS: 47,
+        maxCount: 1000
       }
     ]
   },
@@ -56,6 +68,9 @@ const store = new Vuex.Store({
     },
     updateAutoIncrement (state, n) {
       state.autoIncrement += n
+    },
+    updateCurrentClickIncrement (state, n) {
+      state.currentClickIncrement = state.currentClickIncrement * n
     }
   },
   actions: {
@@ -67,7 +82,7 @@ const store = new Vuex.Store({
     },
     purchaseItem ({ commit, state }, params) {
       let item = params.item
-      if (state.count >= item.price) {
+      if (state.count >= item.price && item.maxCount >= item.count + params.nb) {
         commit('decrement', item.price * params.nb)
         commit('updateAutoIncrement', item.vueS * params.nb)
         commit('updateItem', {item: item, nb: params.nb})
