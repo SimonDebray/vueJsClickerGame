@@ -3,7 +3,8 @@
     <h2>Shop</h2>
     <shop-item v-for="item in items"
                :key="item.id"
-               v-bind:item="item"
+               :item="item"
+               :count="count"
                @buy="buy"
     ></shop-item>
   </div>
@@ -32,7 +33,7 @@ export default {
   },
   methods: {
     buy: function (item) {
-      if (this.count >= item.data.specs.price) {
+      if (this.count >= item.price) {
         store.dispatch('purchaseItem', {item: item, nb: 1})
       }
     }

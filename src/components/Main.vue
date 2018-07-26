@@ -1,12 +1,14 @@
 <template>
   <div>
     <div>
-      <p>{{ count }} vue</p>
+      <p>{{ Math.round(count * 100) / 100 }} vue</p>
+      <p>Vue/seconde {{ Math.round(autoIncrement * 100) / 100 }} vue</p>
     </div>
     <clicker @counter="counter"
              :currentIncrement ="currentClickIncrement"
              :autoIncrement = "autoIncrement"
              :count = "count"></clicker>
+    <display></display>
     <shop
       :currentIncrement ="currentClickIncrement"
       :autoIncrement = "autoIncrement"
@@ -23,10 +25,11 @@ import Bonus from './Bonus'
 import Stats from './Stats'
 import { mapGetters, mapActions } from 'vuex'
 import store from '../store/Store'
+import Display from './Display'
 
 export default {
   name: 'Main',
-  components: {Bonus, Shop, Clicker, Stats},
+  components: {Display, Bonus, Shop, Clicker, Stats},
   computed: {
     ...mapGetters([
       'count',
