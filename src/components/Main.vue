@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <p>{{ Math.round(count) }} vue</p>
+      <h1>{{ Math.round(count) }} vue</h1>
       <p>Vue/seconde {{ Math.round(autoIncrement * 100) / 100 }} vue</p>
     </div>
     <div>
@@ -54,13 +54,16 @@ export default {
   },
   created: function () {
     const self = this
+    // Interval used to add VUEs each second to the counter.
     this.intervalid1 = setInterval(function () {
       store.dispatch('increment', self.autoIncrement)
     }, 1000)
+    // Interval used to display the bonus VUE.js (1 on 5000 each seconds)
     this.intervalid2 = setInterval(function () {
       const n = Math.floor(Math.random() * Math.floor(5000))
       if (n === 1) {
         self.displayBonus = true
+        // Display th bonus for 13 seconds
         setTimeout(function () {
           self.displayBonus = false
         }, 13000)
@@ -72,6 +75,7 @@ export default {
       store.dispatch('increment', this.currentClickIncrement)
     },
     bonus: function () {
+      this.displayBonus = false
       store.dispatch('increment', this.autoIncrement * 600)
     }
   }
@@ -96,9 +100,5 @@ a {
 }
 div {
   display: flex;
-}
-
-.bonus {
-  position: absolute;
 }
 </style>
