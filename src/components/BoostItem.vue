@@ -17,7 +17,7 @@ export default {
   ],
   methods: {
     buyEmit: function () {
-      if (this.item.price <= this.count) {
+      if (this.boost.price <= this.count) {
         this.$emit('boostPurchase', this.boost)
       }
     },
