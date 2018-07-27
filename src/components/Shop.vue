@@ -3,13 +3,13 @@
     <h2>Shop</h2>
     <section>
       <shop-item v-for="item in items"
-                 :key="item.id"
+                 :key="'item' + item.id"
                  :item="item"
                  :count="count"
                  @buy="buy"
       ></shop-item>
       <boost-item v-for="boost in boosts"
-                  :key="boost.id"
+                  :key="'boost' + boost.id"
                   :boost="boost"
                   :count="count"
                   @boostPurchase="boostPurchase"></boost-item>
