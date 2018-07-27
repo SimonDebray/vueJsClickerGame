@@ -17,7 +17,9 @@ export default {
   ],
   methods: {
     buyEmit: function () {
-      this.$emit('boostPurchase', this.boost)
+      if (this.item.price <= this.count) {
+        this.$emit('boostPurchase', this.boost)
+      }
     },
     getClass () {
       return {
