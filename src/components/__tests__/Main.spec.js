@@ -54,11 +54,5 @@ describe('Main.vue', () => {
   it('check data initialized data', () => {
     // Check initialized data
     expect(wrapper.vm.displayBonus).toBe(false)
-
-    setTimeout(function () {
-      expect(wrapper.vm.count).toBe(1)
-      // Wait 1 second to see if the count is updated
-      expect(store.mutations.increment).toHaveBeenCalled()
-    }, 1001)
   })
 })

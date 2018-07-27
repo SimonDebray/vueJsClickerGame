@@ -61,6 +61,7 @@ const store = new Vuex.Store({
         img: require('../assets/clickBoost.jpg'),
         rate: 2,
         price: 100,
+        target: 'Clicker',
         purchased: false
       },
       {
@@ -69,6 +70,7 @@ const store = new Vuex.Store({
         img: require('../assets/clickBoost.jpg'),
         rate: 2,
         price: 500,
+        target: 'Clicker',
         purchased: false
       }
     ]
@@ -126,9 +128,6 @@ const store = new Vuex.Store({
     },
     boosts: state => {
       return state.boosts
-    },
-    item: (state) => (id) => {
-      return state.items.find(items => items.id === id)
     },
     autoIncrement: state => {
       return state.autoIncrement
