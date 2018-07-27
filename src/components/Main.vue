@@ -1,28 +1,28 @@
 <template>
   <div>
-    <div>
-      <h1>{{ Math.round(count) }} vue</h1>
-      <p>Vue/seconde {{ Math.round(autoIncrement * 100) / 100 }} vue</p>
-    </div>
-    <div>
-      <clicker @counter="counter"
-               :currentIncrement ="currentClickIncrement"
-               :autoIncrement = "autoIncrement"
-               :count = "count"></clicker>
-    </div>
-    <div>
+    <main>
+      <section>
+        <h1>{{ Math.round(count) }} vue</h1>
+        <p>Vue/seconde {{ Math.round(autoIncrement * 100) / 100 }} vue</p>
+        <clicker @counter="counter"
+                 :currentIncrement="currentClickIncrement"
+                 :autoIncrement="autoIncrement"
+                 :count="count"></clicker>
+      </section>
+      <section>
+        <shop
+          :currentIncrement="currentClickIncrement"
+          :autoIncrement="autoIncrement"
+          :count="count"></shop>
+      </section>
+    </main>
+    <section>
       <display></display>
-    </div>
-    <div>
-      <shop
-        :currentIncrement ="currentClickIncrement"
-        :autoIncrement = "autoIncrement"
-        :count = "count"></shop>
-    </div>
-    <div class="bonus">
+    </section>
+    <article>
       <bonus v-if="displayBonus"
              @bonus="bonus"></bonus>
-    </div>
+    </article>
   </div>
 </template>
 
@@ -30,7 +30,7 @@
 import Clicker from './Clicker'
 import Shop from './Shop'
 import Bonus from './Bonus'
-import { mapGetters, mapActions } from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
 import store from '../store/Store'
 import Display from './Display'
 
@@ -84,21 +84,33 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-div {
-  display: flex;
-}
+  h1, h2 {
+    font-weight: normal;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  a {
+    color: #42b983;
+  }
+
+  main {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  main section {
+    width: 50%;
+  }
+  article {
+    position: absolute;
+  }
 </style>

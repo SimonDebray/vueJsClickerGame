@@ -1,12 +1,12 @@
 <template>
   <div>
     <h2>Your farm</h2>
-    <ul>
+    <section>
       <display-item v-for="item in items"
                  :key="item.id"
                  v-bind:item="item"
       ></display-item>
-    </ul>
+    </section>
   </div>
 </template>
 <script>
@@ -25,7 +25,8 @@ export default {
 </script>
 
 <style scoped>
-ul, li {
-  list-style: none;
+section{
+  display: flex;
+  flex-wrap: wrap;
 }
 </style>

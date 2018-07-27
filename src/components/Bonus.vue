@@ -1,6 +1,5 @@
 <template>
   <div>
-    Bonus
     <img @click="bonus" src="../assets/bonus.png">
   </div>
 </template>

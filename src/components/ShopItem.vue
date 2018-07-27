@@ -44,4 +44,8 @@ img {
 .isClickable {
   cursor: pointer;
 }
+
+div {
+  margin: 5px 15px;
+}
 </style>

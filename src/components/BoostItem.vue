@@ -45,4 +45,8 @@ export default {
   .isClickable {
     cursor: pointer;
   }
+
+  div {
+    margin: 20px;
+  }
 </style>
