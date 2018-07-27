@@ -41,7 +41,8 @@ export default {
       'boosts'
     ]),
     ...mapActions([
-      'purchaseItem'
+      'purchaseItem',
+      'purchaseBoost'
     ])
   },
   methods: {
